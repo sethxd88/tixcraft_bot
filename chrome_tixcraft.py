@@ -1065,7 +1065,7 @@ def tixcraft_date_auto_select(driver, url, config_dict):
 
     is_coming_soon = False
     coming_soon_condictions_list = ['開賣','剩餘','天','小時','分鐘','秒','0',':','/']
-    
+
     button_list = None
     if date_list is not None:
         button_list = []
@@ -1166,7 +1166,7 @@ def tixcraft_date_auto_select(driver, url, config_dict):
         #   (A)user input keywords, with matched text, but no hyperlink to click.
         #   (B)user input keywords, but not no matched text with hyperlink to click.
 
-    # [PS]: current reload condition only when 
+    # [PS]: current reload condition only when
     if auto_reload_coming_soon_page_enable:
         if is_coming_soon:
             # case 2: match one row is coming soon.
@@ -1681,7 +1681,7 @@ def tixcraft_verify(driver, presale_code):
                     alert_ret = check_pop_alert(driver)
                     if alert_ret:
                         if show_debug_message:
-                            print("press accept button at time #", i+1)                    
+                            print("press accept button at time #", i+1)
                         break
     else:
         if len(inputed_value)==0:
@@ -1826,13 +1826,13 @@ def tixcraft_auto_ocr(driver, ocr, away_from_keyboard_enable, previous_answer, C
                 orc_answer = ocr.classification(img_base64)
             except Exception as exc:
                 pass
-        
+
         ocr_done_time = time.time()
         ocr_elapsed_time = ocr_done_time - ocr_start_time
         print("ocr elapsed time:", "{:.3f}".format(ocr_elapsed_time))
     else:
         print("ddddocr is None")
-        
+
     if not orc_answer is None:
         orc_answer = orc_answer.strip()
         print("orc_answer:", orc_answer)
@@ -1873,12 +1873,12 @@ def tixcraft_auto_ocr(driver, ocr, away_from_keyboard_enable, previous_answer, C
 
 def tixcraft_ticket_main(driver, config_dict, ocr, Captcha_Browser, domain_name):
     auto_check_agree = config_dict["auto_check_agree"]
-    
+
     ocr_captcha_enable = config_dict["ocr_captcha"]["enable"]
     away_from_keyboard_enable = config_dict["ocr_captcha"]["force_submit"]
     if not ocr_captcha_enable:
         away_from_keyboard_enable = False
-    ocr_captcha_image_source = config_dict["ocr_captcha"]["image_source"] 
+    ocr_captcha_image_source = config_dict["ocr_captcha"]["image_source"]
 
     if auto_check_agree:
         tixcraft_ticket_agree(driver)
@@ -1944,10 +1944,10 @@ def tixcraft_ticket_main(driver, config_dict, ocr, Captcha_Browser, domain_name)
                         # start next loop.
                         is_verifyCode_editing = False
                         break
-                    
+
                     if not away_from_keyboard_enable:
                         break
-                    
+
                     if not is_need_redo_ocr:
                         break
 
@@ -4003,7 +4003,7 @@ def cityline_date_auto_select(driver, auto_select_mode, date_keyword, auto_reloa
 
     #PS: some blocks are generate by ajax, not appear at first time.
     formated_area_list = None
-    
+
     if area_list is not None:
         area_list_count = len(area_list)
         if show_debug_message:
@@ -4012,7 +4012,7 @@ def cityline_date_auto_select(driver, auto_select_mode, date_keyword, auto_reloa
         if area_list_count > 0:
             formated_area_list = []
             # filter list.
-            
+
             row_index = 0
             for row in area_list:
                 row_index += 1
@@ -4471,7 +4471,7 @@ def cityline_performance(driver, config_dict):
             #print("area_keyword_1_and:", area_keyword_1_and)
             print("area_keyword_2:", area_keyword_2)
                 #print("area_keyword_2_and:", area_keyword_2_and)
-            
+
         # PS: cityline price default value is selected at the first option.
         is_need_refresh, is_price_assign_by_bot = cityline_area_auto_select(driver, area_auto_select_mode, area_keyword_1, area_keyword_1_and)
 
@@ -5363,7 +5363,7 @@ def urbtix_performance_confirm_dialog_popup(driver):
 
         if ret:
             time.sleep(0.4)
-    
+
     return ret
 
 def urbtix_main(driver, url, config_dict):
@@ -6142,7 +6142,7 @@ def hkticketing_hide_tickets_blocks(driver):
             driver.execute_script("arguments[0].innerHTML='';", mapWrapper_divs);
     except Exception as exc:
         pass
-    
+
 
 def hkticketing_performance(driver, config_dict, domain_name):
     show_debug_message = True       # debug.
@@ -6269,7 +6269,7 @@ def hkticketing_main(driver, url, config_dict):
             area_auto_select_enable = config_dict["tixcraft"]["area_auto_select"]["enable"]
             if area_auto_select_enable:
                 hkticketing_performance(driver, config_dict, domain_name)
-        
+
         if '/seatmap' in url:
             # goto bottom.
             hkticketing_nav_to_footer(driver)
@@ -6459,7 +6459,7 @@ def hkam_date_auto_select(driver, auto_select_mode, date_keyword, auto_reload_co
                         driver.execute_script("arguments[0].click();", el_btn)
                         ret = True
                     except Exception as exc:
-                        pass    
+                        pass
 
     '''
         if auto_reload_coming_soon_page_enable:
@@ -6947,13 +6947,13 @@ def kham_auto_ocr(driver, ocr, away_from_keyboard_enable, previous_answer, Captc
                 orc_answer = ocr.classification(img_base64)
             except Exception as exc:
                 pass
-        
+
         ocr_done_time = time.time()
         ocr_elapsed_time = ocr_done_time - ocr_start_time
         print("ocr elapsed time:", "{:.3f}".format(ocr_elapsed_time))
     else:
         print("ddddocr is None")
-        
+
     if not orc_answer is None:
         orc_answer = orc_answer.strip()
         print("orc_answer:", orc_answer)
@@ -7000,7 +7000,7 @@ def kham_captcha(driver, config_dict, ocr, Captcha_Browser, model_name):
     away_from_keyboard_enable = config_dict["ocr_captcha"]["force_submit"]
     if not ocr_captcha_enable:
         away_from_keyboard_enable = False
-    ocr_captcha_image_source = config_dict["ocr_captcha"]["image_source"] 
+    ocr_captcha_image_source = config_dict["ocr_captcha"]["image_source"]
 
     #PS: need a 'auto assign site' feature to enable away_from_keyboard feature.
     away_from_keyboard_enable = False
@@ -7010,16 +7010,16 @@ def kham_captcha(driver, config_dict, ocr, Captcha_Browser, model_name):
     is_verifyCode_editing = True
     for redo_ocr in range(999):
         is_need_redo_ocr, previous_answer, is_form_sumbited = kham_auto_ocr(driver, ocr, away_from_keyboard_enable, previous_answer, Captcha_Browser, ocr_captcha_image_source, model_name)
-        
+
         # TODO: must ensure the answer is corrent...
         is_cpatcha_sent = True
-        
+
         if is_form_sumbited:
             break
-        
+
         if not away_from_keyboard_enable:
             break
-        
+
         if not is_need_redo_ocr:
             break
 
@@ -7312,7 +7312,7 @@ if __name__ == "__main__":
     CONST_MODE_CLI = 1
     mode = CONST_MODE_GUI
     #mode = CONST_MODE_CLI
-    
+
     if mode == CONST_MODE_GUI:
         main()
     else:
@@ -7342,4 +7342,3 @@ if __name__ == "__main__":
                 image_bytes = f.read()
             res = ocr.classification(image_bytes)
             print(res)
-
