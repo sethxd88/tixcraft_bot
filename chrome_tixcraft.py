@@ -124,7 +124,9 @@ def get_favoriate_extension_path(webdriver_path):
     return no_google_analytics_path, no_ad_path
 
 def get_chromedriver_path(webdriver_path):
-    chromedriver_path = os.path.join(webdriver_path,"chromedriver")
+    # chromedriver_path = os.path.join(webdriver_path,"chromedriver")
+    # chromedriver_path = "webdriver/chromedriver"
+    chromedriver_path = "/Applications/MaxBot.app/Contents/Resources/webdriver/chromedriver"
     if platform.system().lower()=="windows":
         chromedriver_path = os.path.join(webdriver_path,"chromedriver.exe")
     return chromedriver_path
